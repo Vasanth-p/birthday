@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Congratulations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: backgroundFade 3s ease-in-out infinite alternate;
+        }
+        @keyframes backgroundFade {
+            0% { background-color: #f0f8ff; }
+            100% { background-color: #e6f7ff; }
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            margin: 20px;
+            animation: slideIn 1s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 28px;
+            margin-bottom: 20px;
+            animation: textFade 2s ease-in-out infinite alternate;
+        }
+        @keyframes textFade {
+            0% { color: #4CAF50; }
+            100% { color: #388E3C; }
+        }
+        p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            input[type="text"], button {
+                font-size: 14px;
+            }
+        }
+        /* Popup box */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffdddd;
+            padding: 20px;
+            border: 2px solid #f44336;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            animation: popupFadeIn 0.5s ease-out;
+        }
+        .emoji {
+    font-size: 36px; /* Adjust the font size for the emoji */
+}
+
+        @keyframes popupFadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+    </style>
+    <script>
+        function checkNumber() {
+            const correctNumber = 1234; // Replace with your desired correct number
+            const inputNumber = document.getElementById('numberInput').value;
+            
+            if (inputNumber == correctNumber) {
+                window.location.href = 'birthday.html';
+            } else {
+                showPopup();
+            }
+
+            // Clear the input field value
+            document.getElementById('numberInput').value = '';
+        }
+        
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000); // Hide the popup after 2 seconds
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Congratulations on Your Birthday!</h1>
+        <p>Enter the secret number to receive your special birthday message:</p>
+        <input type="text" id="numberInput" placeholder="Enter number here">
+        <button onclick="checkNumber()">Click Me</button>
+    </div>
+    <div id="popup" class="popup">You idiot! 
+        <span class="emoji">🤦
+        </span>
+    </div>
+</body>
+</html>
